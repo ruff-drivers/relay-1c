@@ -30,26 +30,33 @@ rap device add <device-id>
 Here is the basic usage of this driver.
 
 ```js
-$('#<device-id>').turnOn();
-$('#<device-id>').turnOff();
-$('#<device-id>').isOn();
+$('#<device-id>').turnOn([callback]);
+$('#<device-id>').turnOff([callback]);
+$('#<device-id>').isOn(callback);
 ```
 
 ## API References
 
 ### Methods
 
-#### `turnOn()`
+#### `turnOn([callback])`
 
 Turn on the relay.
 
-#### `turnOff()`
+- **callback:** No arguments other than a possible exception are given to the completion callback.
+
+#### `turnOff([callback])`
 
 Turn off the relay.
 
-#### `isOn()`
+- **callback:** No arguments other than a possible exception are given to the completion callback.
+
+#### `isOn(callback)`
 
 Get the working state of the relay
+
+- **callback:** The callback gets two arguments `(error, state)` where `state` is boolean.
+when `state` is true, the relay is turned on, otherwise, is turned off.
 
 ## Contributing
 
