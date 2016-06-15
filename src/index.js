@@ -12,16 +12,25 @@ module.exports = driver({
         this._gpio = inputs.getRequired('gpio');
     },
     exports: {
-        turnOn: function () {
-            this._gpio.write(0);
+        turnOn: function (callback) {
+            this._gpio.write(0, callback);
         },
 
-        turnOff: function () {
-            this._gpio.write(1);
+        turnOff: function (callback) {
+            this._gpio.write(1, callback);
         },
 
-        isOn: function () {
-            return this._gpio.read() === 0;
+        isOn: function (callback) {
+            var readCallback = callback && function (error, value) {
+                if (error) {
+                    callback(error);
+                    return;
+                }
+
+                callback(undefined, !value);
+            };
+
+            this._gpio.read(readCallback);
         }
     }
 });
