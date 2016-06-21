@@ -6,18 +6,19 @@
 'use strict';
 
 var driver = require('ruff-driver');
+var Level = require('gpio').Level;
 
 module.exports = driver({
     attach: function (inputs) {
-        this._gpio = inputs.getRequired('gpio');
+        this._gpio = inputs['gpio'];
     },
     exports: {
         turnOn: function (callback) {
-            this._gpio.write(0, callback);
+            this._gpio.write(Level.low, callback);
         },
 
         turnOff: function (callback) {
-            this._gpio.write(1, callback);
+            this._gpio.write(Level.high, callback);
         },
 
         isOn: function (callback) {

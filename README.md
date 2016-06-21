@@ -10,7 +10,7 @@ A Relay is an electrically operated switch, use an electromagnet to mechanically
 
 ## Supported Models
 
-- [RELAY-1C](https://rap.ruff.io/devices/relay-1c)
+- [relay-1c](https://rap.ruff.io/devices/relay-1c)
 
 ## Installing
 
@@ -22,7 +22,7 @@ Execute following command and enter a **supported model** to install.
 rap device add <device-id>
 
 # Then enter a supported model, for example:
-# ? model: RELAY-1C
+# ? model: relay-1c
 ```
 
 ## Usage
@@ -30,9 +30,15 @@ rap device add <device-id>
 Here is the basic usage of this driver.
 
 ```js
-$('#<device-id>').turnOn([callback]);
-$('#<device-id>').turnOff([callback]);
-$('#<device-id>').isOn(callback);
+$('#<device-id>').turnOn(function () {
+    console.log('turn on');
+});
+$('#<device-id>').turnOff(function () {
+    console.log('turn off');
+});
+$('#<device-id>').isOn(function (error, state) {
+    console.log('the state is ' + state);
+});
 ```
 
 ## API References
