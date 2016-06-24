@@ -46,17 +46,6 @@ describe('Relay Driver', function () {
         relay.turnOff(done);
     });
 
-    it('shoule gpio write 1 when realy turn off', function (done) {
-        when(gpio).write(1, callback).then(function () {
-            callback();
-        });
-        relay.turnOff(callback);
-
-        function callback() {
-            done();
-        }
-    });
-
     it('should have `isOn` called back with true when gpio read `Level.high`', function (done) {
         when(gpio)
             .read(any)
