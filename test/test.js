@@ -7,7 +7,6 @@ var mock = require('ruff-mock');
 
 var when = mock.when;
 var any = mock.any;
-var mockAny = mock.mockAny;
 
 var Device = require('../');
 
@@ -18,7 +17,7 @@ describe('Relay Driver', function () {
     var gpio;
 
     before(function () {
-        gpio = mockAny();
+        gpio = mock();
         relay = new Device({
             gpio: gpio
         });
